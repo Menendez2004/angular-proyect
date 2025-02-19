@@ -36,7 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
         HeroesRoutingModule,
         MaterialModule,
         StoreModule.forFeature('heroes', HeroReducer),
-        EffectsModule.forFeature([HeroEffects]), // Change this line from forRoot to forFeature
+        EffectsModule.forFeature([HeroEffects]), 
     ],
     providers: [HeroesService],
 })

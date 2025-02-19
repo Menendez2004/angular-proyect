@@ -10,15 +10,15 @@ export const initialState: HeroState = {
 
 export const HeroReducer = createReducer(
     initialState,
-    on(HeroActions.loadHeroes, state => ({
+    on(HeroActions.loadHero, state => ({
         ...state,
         loading: true,
         error: null
     })),
 
-    on(HeroActions.loadHeroesSuccess, (state, { heroes }) => ({
+    on(HeroActions.loadHeroSuccess, (state, { hero }) => ({
         ...state,
-        heroes,
+        hero,
         loading: false
     })),
 
@@ -29,12 +29,12 @@ export const HeroReducer = createReducer(
     })),
 
 
-    on(HeroActions.createHero, state => ({
+    on(HeroActions.createHeroSuccess, state => ({
         ...state,
         loading: true
     })),
 
-    on(HeroActions.createHero, (state, { hero }) => ({
+    on(HeroActions.createHeroSuccess, (state, { hero }) => ({
         ...state,
         hero,
         loading: false

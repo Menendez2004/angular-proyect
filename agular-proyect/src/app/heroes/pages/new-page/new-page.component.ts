@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -17,6 +17,15 @@ import * as HeroSelectors from './../../store/selectors/hero.selector';
   styles: []
 })
 export class NewPageComponent implements OnInit {
+
+  private readonly store = inject(Store);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly dialog = inject(MatDialog);
+
+  public hero$ = signal(this.store.select(HeroSelectors.selectHero));
+  public isLoading$ = signal(this.store.select(HeroSelectors.selectHeroLoading));
+
   public heroForm = new FormGroup({
     id: new FormControl<string>(''),
     superhero: new FormControl<string>('', { nonNullable: true }),
@@ -31,52 +40,57 @@ export class NewPageComponent implements OnInit {
     { id: 'DC Comics', desc: 'DC - Comics' },
     { id: 'Marvel Comics', desc: 'Marvel - Comics' },
   ];
-  
-
-  
-  constructor(
-    private store: Store, 
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private dialog: MatDialog,
-  ) { const loadHero$ = this.store.select(HeroSelectors.selectHeroLoading)}
 
   get currentHero(): Hero {
     return this.heroForm.value as Hero;
   }
-    /**
-     * Lifecycle hook to initialize the component.
-     * Checks if the URL contains 'edit' to load the hero details.
-     */
+
+
   ngOnInit(): void {
     if (!this.router.url.includes('edit')) return;
 
     this.activatedRoute.params.subscribe(({ id }) => {
-      this.store.dispatch(HeroActions.loadHeroes({ id }));
+      this.store.dispatch(HeroActions.loadHero({ id }));
     });
 
-    this.store.select(HeroSelectors.selectHero).subscribe(hero => {
+    this.hero$().subscribe(hero => {
       if (!hero) return;
-      this.heroForm.reset(hero);
+
+      this.heroForm.setValue({
+        ...hero,
+        alt_img: hero.alt_img ?? ''
+      });
     });
   }
+
 
   /**
    * Method to handle form submission.
    * Dispatches actions to create or update a hero.
    */
-
   onSubmit(): void {
     if (this.heroForm.invalid) return;
 
-    if (this.currentHero.id) {
-      this.store.dispatch(HeroActions.updateHero({ hero: this.currentHero }));
-      return;
-    }
+    const cleanedHero: Hero = this.heroForm.getRawValue() as Hero;
 
-    this.store.dispatch(HeroActions.createHero({ hero: this.currentHero }));
+    Object.keys(cleanedHero).forEach((key) => {
+      const property = key as keyof Hero; 
+      if (typeof cleanedHero[property] === 'string' && property !== 'publisher') {
+        cleanedHero[property] = (cleanedHero[property] as string).trim();
+      }
+    });
+
+
+    if (cleanedHero.id) {
+      this.store.dispatch(HeroActions.updateHero({ hero: cleanedHero }));
+    } else {
+      this.store.dispatch(HeroActions.createHeroSuccess({ hero: cleanedHero }));
+    }
   }
-  
+
+
+
+
   /**
    * Method to handle hero deletion.
    * Opens a confirmation dialog before dispatching the delete action.
@@ -89,9 +103,7 @@ export class NewPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed()
-      .pipe(
-        filter((result: boolean) => result)
-      )
+      .pipe(filter((result: boolean) => result))
       .subscribe(() => {
         this.store.dispatch(HeroActions.deleteHero({ id: this.currentHero.id! }));
       });
