@@ -1,28 +1,13 @@
+<div style="display: flex; flex-direction: column; gap: 10px; width: 300px;">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" />
+  </mat-form-field>
 
-<div class="flex flex-column">
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" [(ngModel)]="password" />
+  </mat-form-field>
 
-    <span class="text-lg mb-4">Login</span>
-  
-    <mat-form-field>
-      <mat-label>Usuario</mat-label>
-      <input type="text" matInput placeholder="Nombre de usuario">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Contraseña">
-    </mat-form-field>
-  
-    <button mat-button mat-flat-button color="primary"
-      (click)="onLogin()">
-      Ingresar
-    </button>
-  
-  
-    <div class="flex justify-content-end mt-5">
-      <a routerLink="/auth/new-account">¿Ya tienes cuenta?</a>
-    </div>
-  
-  </div>
-  
-  
+  <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+</div>

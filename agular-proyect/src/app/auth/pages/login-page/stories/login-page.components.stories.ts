@@ -6,9 +6,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { RouterTestingModule } from "@angular/router/testing";
 import { AuthService } from "../../../services/auth.service";
 import { MockAuthService } from "../../../../mocks/user.mock";
+import { action } from "@storybook/addon-actions";
 
 @Component({
     selector: "auth-login-page-mock",
@@ -21,16 +21,27 @@ import { MockAuthService } from "../../../../mocks/user.mock";
         MatInputModule,
         MatButtonModule,
         MatIconModule,
-        RouterTestingModule,
     ],
 })
 class MockLoginComponent {
     @Input() email: string = "";
     @Input() password: string = "";
+
+    private validEmail = "testuser@example.com";
+    private validPassword = "123456";
+
+    onLogin() {
+        if (this.email === this.validEmail && this.password === this.validPassword) {
+            action("Login Success")({ email: this.email, password: this.password });
+        } else {
+            action("Login Failed, verify your crendentials")({ email: this.email, password: this.password });
+            
+        }
+    }
 }
 
 export default {
-    title: "Auth/Login Page",
+    title: "Auth/Login-page",
     component: MockLoginComponent,
     tags: ["autodocs"],
     parameters: {
@@ -45,7 +56,6 @@ export default {
                 MatInputModule,
                 MatButtonModule,
                 MatIconModule,
-                RouterTestingModule,
             ],
             providers: [{ provide: AuthService, useClass: MockAuthService }],
         }),

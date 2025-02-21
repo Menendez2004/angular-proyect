@@ -1838,44 +1838,7 @@
         },
         {
             "name": "LayoutPageComponent",
-            "id": "component-LayoutPageComponent-493bb179bc540ac48ba2700f54db2474f62077fdc3545d29812692d7029dc963830adb30cae3cb686a7383638f39a3fe18167908b78ecdde3bfb4a245b2ad69d",
-            "file": "src/app/auth/pages/layout-page/layout-page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-layout-page",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./layout-page.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": false,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-layout-page',\r\n  templateUrl: './layout-page.component.html',\r\n  standalone: false,\r\n  styles: [\r\n  ]\r\n})\r\nexport class LayoutPageComponent {\r\n\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"grid p-3\">\r\n    <div class=\"col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  </div>\r\n  \r\n  "
-        },
-        {
-            "name": "LayoutPageComponent",
-            "id": "component-LayoutPageComponent-d0ddabe45a86fe7d66b883173ee5582a0bd21475d8cac167c91bff2185aa72974619576b936f34e8b550e0a9c9fecfc00a787d12d23a4e7a55d27bd2f1eb9497-1",
+            "id": "component-LayoutPageComponent-d0ddabe45a86fe7d66b883173ee5582a0bd21475d8cac167c91bff2185aa72974619576b936f34e8b550e0a9c9fecfc00a787d12d23a4e7a55d27bd2f1eb9497",
             "file": "src/app/heroes/pages/layout-page/layout-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1986,10 +1949,47 @@
                     }
                 }
             },
+            "templateData": "<mat-sidenav-container fullscreen>\r\n\r\n    <mat-sidenav #sidenav mode=\"push\" [ngStyle]=\"{ width: '250px' }\">\r\n      <mat-toolbar>\r\n        <span>Menú</span>\r\n        <span class=\"spacer\"></span>\r\n        <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n          <mat-icon>menu</mat-icon>\r\n        </button>\r\n  \r\n      </mat-toolbar>\r\n  \r\n      <mat-nav-list>\r\n        <mat-list-item\r\n          *ngFor=\"let item of sidebarItems\"\r\n          [routerLink]=\"item.url\"\r\n          (click)=\"sidenav.toggle()\"\r\n        >\r\n          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>\r\n          {{ item.label }}\r\n        </mat-list-item>\r\n      </mat-nav-list>\r\n  \r\n    </mat-sidenav>\r\n  \r\n  \r\n    <mat-toolbar color=\"primary\">\r\n      <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n  \r\n      <span class=\"spacer\"></span>\r\n  \r\n      <span>{{ user?.email }}</span>\r\n  \r\n      <button mat-button (click)=\"onLogout()\">\r\n        Logout\r\n      </button>\r\n  \r\n    </mat-toolbar>\r\n  \r\n  \r\n    <div class=\"container p-2\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  \r\n  </mat-sidenav-container>\r\n  \r\n  \r\n  \r\n  \r\n  "
+        },
+        {
+            "name": "LayoutPageComponent",
+            "id": "component-LayoutPageComponent-493bb179bc540ac48ba2700f54db2474f62077fdc3545d29812692d7029dc963830adb30cae3cb686a7383638f39a3fe18167908b78ecdde3bfb4a245b2ad69d-1",
+            "file": "src/app/auth/pages/layout-page/layout-page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-layout-page",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./layout-page.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-layout-page',\r\n  templateUrl: './layout-page.component.html',\r\n  standalone: false,\r\n  styles: [\r\n  ]\r\n})\r\nexport class LayoutPageComponent {\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "LayoutPageComponent-1",
-            "templateData": "<mat-sidenav-container fullscreen>\r\n\r\n    <mat-sidenav #sidenav mode=\"push\" [ngStyle]=\"{ width: '250px' }\">\r\n      <mat-toolbar>\r\n        <span>Menú</span>\r\n        <span class=\"spacer\"></span>\r\n        <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n          <mat-icon>menu</mat-icon>\r\n        </button>\r\n  \r\n      </mat-toolbar>\r\n  \r\n      <mat-nav-list>\r\n        <mat-list-item\r\n          *ngFor=\"let item of sidebarItems\"\r\n          [routerLink]=\"item.url\"\r\n          (click)=\"sidenav.toggle()\"\r\n        >\r\n          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>\r\n          {{ item.label }}\r\n        </mat-list-item>\r\n      </mat-nav-list>\r\n  \r\n    </mat-sidenav>\r\n  \r\n  \r\n    <mat-toolbar color=\"primary\">\r\n      <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n  \r\n      <span class=\"spacer\"></span>\r\n  \r\n      <span>{{ user?.email }}</span>\r\n  \r\n      <button mat-button (click)=\"onLogout()\">\r\n        Logout\r\n      </button>\r\n  \r\n    </mat-toolbar>\r\n  \r\n  \r\n    <div class=\"container p-2\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  \r\n  </mat-sidenav-container>\r\n  \r\n  \r\n  \r\n  \r\n  "
+            "templateData": "<div class=\"grid p-3\">\r\n    <div class=\"col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  </div>\r\n  \r\n  "
         },
         {
             "name": "ListPageComponent",
@@ -2773,9 +2773,6 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "LayoutPageComponent"
-                        },
-                        {
                             "name": "LoginPageComponent"
                         },
                         {
@@ -2873,6 +2870,9 @@
                         },
                         {
                             "name": "HeroPageComponent"
+                        },
+                        {
+                            "name": "LayoutPageComponent"
                         },
                         {
                             "name": "ListPageComponent"

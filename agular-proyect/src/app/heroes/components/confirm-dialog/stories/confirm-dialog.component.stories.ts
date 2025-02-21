@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmDialogComponent } from '../confirm-dialog.component';
 import { Publisher } from '../../../interfaces/hero.interface';
+import { action } from "@storybook/addon-actions";
 
 export default {
     title: 'heroes/ConfirmDialog',
@@ -38,6 +39,10 @@ export default {
             ],
         }),
     ],
+    argTypes: {
+        onNoClick: { action: "Cancel Clicked" },
+        onConfirm: { action: "Confirm Clicked" }
+    },
 } as Meta<ConfirmDialogComponent>;
 
 const Template: StoryFn<ConfirmDialogComponent> = (args: ConfirmDialogComponent) => ({
@@ -64,14 +69,13 @@ const Template: StoryFn<ConfirmDialogComponent> = (args: ConfirmDialogComponent)
             publisher: Publisher.DCComics,
             alt_img: ""
         },
-        onNoClick: () => console.log('No clicked'),
-        onConfirm: () => console.log('Confirmed')
+        onNoClick: action("Cancel Clicked"), 
+        onConfirm: action("Confirm Clicked"),
     }
 });
 
 export const Confirm = Template.bind({});
 
-// Optional: Add specific args for the Default story
 Confirm.args = {
     data: {
         superhero: 'Superman',
