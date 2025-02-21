@@ -1,36 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { HeroesService } from '../../services/heroes.service';
 import * as HeroActions from '../actions/hero.actions';
-import { Router } from '@angular/router';
+import { RedirectCommand, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class HeroEffects {
-    loadHero$ = createEffect(() =>
+    private readonly actions$ = inject(Actions);
+    private readonly heroesService = inject(HeroesService);
+    private readonly router = inject(Router);
+    private readonly snackbar = inject(MatSnackBar);
+
+    loadHero = createEffect(() =>
         this.actions$.pipe(
-            ofType(HeroActions.loadHeroes),
+            ofType(HeroActions.loadHero),
             mergeMap(({ id }) =>
                 this.heroesService.getHeroById(id).pipe(
                     map(hero =>
                         hero
-                            ? HeroActions.loadHeroesSuccess({ heroes: [hero] })
-                            : HeroActions.loadHeroesError({ error: 'Hero not found' })
+                            ? HeroActions.loadHeroSuccess({ hero })
+                            : HeroActions.loadHeroFailure({ error: 'Hero not found' })
                     ),
-                    catchError(error => of(HeroActions.loadHeroesError({ error })))
+                    catchError(error => of(HeroActions.loadHeroFailure({ error })))
                 )
             )
         )
     );
 
-    createHero$ = createEffect(() =>
+    createHero = createEffect(() =>
         this.actions$.pipe(
             ofType(HeroActions.createHero),
             mergeMap(({ hero }) =>
                 this.heroesService.addHero(hero).pipe(
-                    map(createdHero => HeroActions.createHero({ hero: createdHero })), // Fixed action name
+                    map(createdHero => HeroActions.createHeroSuccess({ hero: createdHero })),
                     catchError(error => of(HeroActions.createHeroFailure({ error })))
                 )
             )
@@ -40,16 +45,15 @@ export class HeroEffects {
     createHeroSuccess$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(HeroActions.createHero), // Changed to listen for success action
+                ofType(HeroActions.createHeroSuccess),
                 tap(({ hero }) => {
-                    this.router.navigate(['/heroes/edit', hero.id]);
                     this.showSnackbar(`${hero.superhero} created!`);
                 })
             ),
         { dispatch: false }
     );
 
-    updateHero$ = createEffect(() =>
+    updateHero = createEffect(() =>
         this.actions$.pipe(
             ofType(HeroActions.updateHero),
             mergeMap(({ hero }) =>
@@ -61,7 +65,7 @@ export class HeroEffects {
         )
     );
 
-    updateHeroSuccess$ = createEffect(
+    updateHeroSuccess = createEffect(
         () =>
             this.actions$.pipe(
                 ofType(HeroActions.updateHeroSuccess),
@@ -72,7 +76,7 @@ export class HeroEffects {
         { dispatch: false }
     );
 
-    deleteHero$ = createEffect(() =>
+    deleteHero = createEffect(() =>
         this.actions$.pipe(
             ofType(HeroActions.deleteHero),
             mergeMap(({ id }) =>
@@ -84,7 +88,7 @@ export class HeroEffects {
         )
     );
 
-    deleteHeroSuccess$ = createEffect(
+    deleteHeroSuccess = createEffect(
         () =>
             this.actions$.pipe(
                 ofType(HeroActions.deleteHeroSuccess),
@@ -95,16 +99,10 @@ export class HeroEffects {
         { dispatch: false }
     );
 
-    constructor(
-        private readonly actions$: Actions,
-        private readonly heroesService: HeroesService,
-        private readonly router: Router,
-        private readonly snackbar: MatSnackBar
-    ) {}
-
     private showSnackbar(message: string): void {
-        this.snackbar.open(message, 'done', {
-            duration: 2500,
-        });
+        this.snackbar.open(message, 'Done', { duration: 2500 });
+        this.router.navigate(['/heroes']);
     }
+
+
 }
