@@ -10,55 +10,72 @@ export const initialState: HeroState = {
 
 export const HeroReducer = createReducer(
     initialState,
+
+    // Load hero
     on(HeroActions.loadHero, state => ({
         ...state,
         loading: true,
         error: null
     })),
-
     on(HeroActions.loadHeroSuccess, (state, { hero }) => ({
         ...state,
         hero,
         loading: false
     })),
+    on(HeroActions.loadHeroFailure, (state, { error }) => ({
+        ...state,
+        error,
+        loading: false
+    })),
 
+    // Create hero
+    on(HeroActions.createHero, state => ({
+        ...state,
+        loading: true,
+        error: null
+    })),
+    on(HeroActions.createHeroSuccess, (state, { hero }) => ({
+        ...state,
+        hero,
+        loading: false
+    })),
+    on(HeroActions.createHeroFailure, (state, { error }) => ({
+        ...state,
+        error,
+        loading: false
+    })),
+
+    // Update hero
+    on(HeroActions.updateHero, state => ({
+        ...state,
+        loading: true,
+        error: null
+    })),
+    on(HeroActions.updateHeroSuccess, (state, { hero }) => ({
+        ...state,
+        hero,
+        loading: false
+    })),
     on(HeroActions.updateHeroFailure, (state, { error }) => ({
         ...state,
         error,
         loading: false
     })),
 
-
-    on(HeroActions.createHeroSuccess, state => ({
-        ...state,
-        loading: true
-    })),
-
-    on(HeroActions.createHeroSuccess, (state, { hero }) => ({
-        ...state,
-        hero,
-        loading: false
-    })),
-
-    on(HeroActions.updateHero, state => ({
-        ...state,
-        loading: true
-    })),
-
-    on(HeroActions.updateHeroSuccess, (state, { hero }) => ({
-        ...state,
-        hero,
-        loading: false
-    })),
-
+    // Delete hero
     on(HeroActions.deleteHero, state => ({
         ...state,
-        loading: true
+        loading: true,
+        error: null
     })),
-
     on(HeroActions.deleteHeroSuccess, state => ({
         ...state,
         hero: null,
+        loading: false
+    })),
+    on(HeroActions.deleteHeroFailure, (state, { error }) => ({
+        ...state,
+        error,
         loading: false
     }))
 );

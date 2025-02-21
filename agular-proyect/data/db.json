@@ -9,12 +9,11 @@
   "heroes": [
     {
       "id": "dc-batman",
-      "superhero": "Batman33",
+      "superhero": "Batman",
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
       "first_appearance": "Detective Comics #27",
-      "characters": "Bruce Wayne",
-      "alt_img": ""
+      "characters": "Bruce Wayne"
     },
     {
       "id": "dc-superman",
@@ -87,6 +86,7 @@
       "alter_ego": "Dinah Drake",
       "first_appearance": "Flash Comics #86",
       "characters": "Dinah Drake, Dinah Lance"
+
     },
     {
       "id": "marvel-spider",
@@ -154,11 +154,102 @@
     },
     {
       "id": "marvel-cyclops",
-      "superhero": "Cyclops",
+      "superhero": "Cyclops11",
       "publisher": "Marvel Comics",
       "alter_ego": "Scott Summers",
       "first_appearance": "X-Men #1",
-      "characters": "Scott Summers"
+      "characters": "Scott Summers",
+      "alt_img": ""
+    },
+    {
+      "id": "",
+      "superhero": "asdsad",
+      "publisher": "DC Comics",
+      "alter_ego": "adasdsad",
+      "first_appearance": "asdasd",
+      "characters": "dasdasdasda",
+      "alt_img": "dasdadasd"
+    },
+    {
+      "id": "",
+      "superhero": "dadasd",
+      "publisher": "DC Comics",
+      "alter_ego": "sadasd",
+      "first_appearance": "dasdsada",
+      "characters": "adasda",
+      "alt_img": "asdasdas"
+    },
+    {
+      "id": "",
+      "superhero": "sdasdasd",
+      "publisher": "DC Comics",
+      "alter_ego": "dasdasd",
+      "first_appearance": "adasdasdasdasdadas",
+      "characters": "daaaaaaaaaaaa",
+      "alt_img": "aaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "",
+      "superhero": "test2",
+      "publisher": "DC Comics",
+      "alter_ego": "ego",
+      "first_appearance": "1",
+      "characters": "123",
+      "alt_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfHCoa-AZcOOmUfmDQT4Y7W3AOM_I_K_t9IQ&s"
+    },
+    {
+      "id": "",
+      "superhero": "dasdsa",
+      "publisher": "DC Comics",
+      "alter_ego": "adasdas",
+      "first_appearance": "asdsad",
+      "characters": "aaaaaaaa",
+      "alt_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgpPwM5mR5lNHGg9vxaoUgcnAIBOJumsoJrg&s"
+    },
+    {
+      "id": "",
+      "superhero": "aaaaaa",
+      "publisher": "DC Comics",
+      "alter_ego": "aa",
+      "first_appearance": "aa",
+      "characters": "aaa",
+      "alt_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgpPwM5mR5lNHGg9vxaoUgcnAIBOJumsoJrg&s"
+    },
+    {
+      "id": "",
+      "superhero": "1",
+      "publisher": "DC Comics",
+      "alter_ego": "1",
+      "first_appearance": "1",
+      "characters": "1",
+      "alt_img": "1"
+    },
+    {
+      "id": "dc-comics-a",
+      "superhero": "a",
+      "publisher": "DC Comics",
+      "alter_ego": "aa",
+      "first_appearance": "aa",
+      "characters": "aaa",
+      "alt_img": "aaaa"
+    },
+    {
+      "id": "marvel-1",
+      "superhero": "1",
+      "publisher": "Marvel Comics",
+      "alter_ego": "21",
+      "first_appearance": "12",
+      "characters": "12",
+      "alt_img": "12"
+    },
+    {
+      "id": "dc-12",
+      "superhero": "12",
+      "publisher": "DC Comics",
+      "alter_ego": "12",
+      "first_appearance": "12",
+      "characters": "12",
+      "alt_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmAoSPgN1NQKm6kTJKCYxVtsYhOtIS3PnJQ&s"
     }
   ]
 }

@@ -54,10 +54,15 @@ export class NewPageComponent implements OnInit {
     });
 
     this.hero$().subscribe(hero => {
-      if (!hero) return;
+      if (!hero || !hero.id) return;
 
       this.heroForm.setValue({
-        ...hero,
+        id: hero.id ?? '',
+        superhero: hero.superhero ?? '',
+        publisher: hero.publisher ?? Publisher.DCComics,
+        alter_ego: hero.alter_ego ?? '',
+        first_appearance: hero.first_appearance ?? '',
+        characters: hero.characters ?? '',
         alt_img: hero.alt_img ?? ''
       });
     });
@@ -71,22 +76,25 @@ export class NewPageComponent implements OnInit {
   onSubmit(): void {
     if (this.heroForm.invalid) return;
 
-    const cleanedHero: Hero = this.heroForm.getRawValue() as Hero;
+    let newHero: Hero = this.heroForm.getRawValue() as Hero;
 
-    Object.keys(cleanedHero).forEach((key) => {
-      const property = key as keyof Hero; 
-      if (typeof cleanedHero[property] === 'string' && property !== 'publisher') {
-        cleanedHero[property] = (cleanedHero[property] as string).trim();
+    Object.keys(newHero).forEach((key) => {
+      const property = key as keyof Hero;
+      if (typeof newHero[property] === 'string' && property !== 'publisher' ) {
+        newHero[property] = (newHero[property] as string).trim();
       }
     });
 
-
-    if (cleanedHero.id) {
-      this.store.dispatch(HeroActions.updateHero({ hero: cleanedHero }));
-    } else {
-      this.store.dispatch(HeroActions.createHeroSuccess({ hero: cleanedHero }));
+    if (!newHero.id) {
+      newHero.id = `${newHero.publisher.split(' ')[0].toLowerCase()}-${newHero.superhero.toLowerCase().replace(/\s+/g, '-')}`;
     }
+
+    console.log('📌 Dispatching createHero:', newHero); // Debugging
+
+    this.store.dispatch(HeroActions.createHero({ hero: newHero }));
   }
+
+
 
 
 

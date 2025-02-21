@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { HeroesService } from '../../services/heroes.service';
 import * as HeroActions from '../actions/hero.actions';
-import { Router } from '@angular/router';
+import { RedirectCommand, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
@@ -30,30 +30,28 @@ export class HeroEffects {
         )
     );
 
-    // createHero = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(HeroActions.createHeroSuccess),
-    //         mergeMap(({ hero }) =>
-    //             this.heroesService.addHero(hero).pipe(
-    //                 map(createdHero => HeroActions.createHeroSuccess({ hero: createdHero })), 
-    //                 catchError(error => of(HeroActions.createHeroFailure({ error })))
-    //             )
-    //         )
-    //     )
-    // );
+    createHero = createEffect(() =>
+        this.actions$.pipe(
+            ofType(HeroActions.createHero),
+            mergeMap(({ hero }) =>
+                this.heroesService.addHero(hero).pipe(
+                    map(createdHero => HeroActions.createHeroSuccess({ hero: createdHero })),
+                    catchError(error => of(HeroActions.createHeroFailure({ error })))
+                )
+            )
+        )
+    );
 
     createHeroSuccess$ = createEffect(
         () =>
             this.actions$.pipe(
-                ofType(HeroActions.createHeroSuccess), // ✅ Fix: Listen to SUCCESS action
+                ofType(HeroActions.createHeroSuccess),
                 tap(({ hero }) => {
-                    this.router.navigate(['/heroes/edit', hero.id]);
                     this.showSnackbar(`${hero.superhero} created!`);
                 })
             ),
         { dispatch: false }
     );
-
 
     updateHero = createEffect(() =>
         this.actions$.pipe(
@@ -103,5 +101,8 @@ export class HeroEffects {
 
     private showSnackbar(message: string): void {
         this.snackbar.open(message, 'Done', { duration: 2500 });
+        this.router.navigate(['/heroes']);
     }
+
+
 }

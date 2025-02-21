@@ -1,27 +1,25 @@
 import { createAction, props } from "@ngrx/store";
 import { Hero } from "../../interfaces/hero.interface";
 
-/**
- * ✅ Load Hero (singular) - Fix naming for clarity
- */
 export const loadHero = createAction(
     '[Hero] Load Hero',
     props<{ id: string }>()
 );
 export const loadHeroSuccess = createAction(
     '[Hero] Load Hero Success',
-    props<{ hero: Hero }>() // ✅ Expect a single hero instead of an array
+    props<{ hero: Hero }>() 
 );
 export const loadHeroFailure = createAction(
     '[Hero] Load Hero Failure',
     props<{ error: any }>()
 );
 
-// export const createHero = createAction(
-//     '[Hero] Create Hero',
-//     props<{ hero: Hero }>()
-// );
-export const createHeroSuccess = createAction( // ✅ Fix action name
+export const createHero = createAction(
+    '[Hero] Create Hero',
+    props<{ hero: Hero }>()
+);
+
+export const createHeroSuccess = createAction( 
     '[Hero] Create Hero Success',
     props<{ hero: Hero }>()
 );
@@ -30,9 +28,6 @@ export const createHeroFailure = createAction(
     props<{ error: any }>()
 );
 
-/**
- * ✅ Update Hero
- */
 export const updateHero = createAction(
     '[Hero] Update Hero',
     props<{ hero: Hero }>()
@@ -46,9 +41,7 @@ export const updateHeroFailure = createAction(
     props<{ error: any }>()
 );
 
-/**
- * ✅ Delete Hero
- */
+
 export const deleteHero = createAction(
     '[Hero] Delete Hero',
     props<{ id: string }>()
