@@ -27,7 +27,6 @@ import { EffectsModule } from '@ngrx/effects';
         NewPageComponent,
         SearchPageComponent,
         CardComponent,
-        HeroImagePipe,
         ConfirmDialogComponent,
     ],
     imports: [
@@ -37,6 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
         MaterialModule,
         StoreModule.forFeature('heroes', HeroReducer),
         EffectsModule.forFeature([HeroEffects]), 
+        HeroImagePipe,
     ],
     providers: [HeroesService],
 })

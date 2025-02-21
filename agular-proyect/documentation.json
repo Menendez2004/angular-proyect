@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "HeroImagePipe",
-            "id": "pipe-HeroImagePipe-05980a2ca90460f9c1fe4281b5771518a343ebf6ea15ccbc7f7c2046841168152ab7249cd01606b2647ae21eca11289353dbe94f7659f3d30badaaa4b1ebc4bb",
+            "id": "pipe-HeroImagePipe-93a6a78ad0874d6a46823e15526e6fa07eb25217ac82b5d2864a88454033a63e43e1d2588c93770b1001d819a0eef4718194d792201598d5079835e0fa5805f3",
             "file": "src/app/heroes/pipes/hero-image.pipe.ts",
             "type": "pipe",
             "deprecated": false,
@@ -40,9 +40,9 @@
                     ]
                 }
             ],
-            "standalone": false,
+            "standalone": true,
             "ngname": "heroImage",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\r\nimport { Hero } from '../interfaces/hero.interface';\r\n\r\n@Pipe({\r\n  name: 'heroImage',\r\n  standalone: false\r\n})\r\nexport class HeroImagePipe implements PipeTransform {\r\n\r\n  transform(hero: Hero): string {\r\n\r\n    if (!hero || (!hero.id && !hero.alt_img)) {\r\n      return 'assets/no-image.png';\r\n    }\r\n\r\n    if (hero.alt_img?.trim()) return hero.alt_img;\r\n\r\n    return `assets/heroes/${hero.id}.jpg`;\r\n  }\r\n\r\n\r\n}\r\n"
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\r\nimport { Hero } from '../interfaces/hero.interface';\r\n\r\n@Pipe({\r\n  name: 'heroImage',\r\n  standalone: true\r\n})\r\nexport class HeroImagePipe implements PipeTransform {\r\n\r\n  transform(hero: Hero): string {\r\n\r\n    if (!hero || (!hero.id && !hero.alt_img)) {\r\n      return 'assets/no-image.png';\r\n    }\r\n\r\n    if (hero.alt_img?.trim()) return hero.alt_img;\r\n\r\n    return `assets/heroes/${hero.id}.jpg`;\r\n  }\r\n\r\n\r\n}\r\n"
         }
     ],
     "interfaces": [
@@ -1343,7 +1343,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "\r\n<mat-card>\r\n  <mat-card-header>\r\n    <mat-card-title>{{ hero.superhero }}</mat-card-title>\r\n    <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>\r\n  </mat-card-header>\r\n\r\n  <!-- TODO: imagen -->\r\n  <img mat-card-image [src]=\"hero | heroImage\" [alt]=\"hero.superhero\">\r\n\r\n  <mat-card-content class=\"mt-2\">\r\n    <h4>{{ hero.publisher }}</h4>\r\n    <p>\r\n      <strong>Primera aparición</strong> {{ hero.first_appearance }}\r\n      <br>\r\n      <mat-chip-listbox>\r\n        <mat-chip *ngFor=\"let name of hero.characters.split(',') | slice:0:3\">\r\n          {{ name }}\r\n        </mat-chip>\r\n      </mat-chip-listbox>\r\n    </p>\r\n  </mat-card-content>\r\n\r\n  <mat-divider></mat-divider>\r\n\r\n  <mat-card-actions>\r\n\r\n    <button mat-button\r\n      mat-raised\r\n      color=\"primary\"\r\n      [routerLink]=\"['/heroes/edit', hero.id ]\">\r\n      <mat-icon>edit</mat-icon>\r\n      Editar\r\n    </button>\r\n\r\n    <span class=\"spacer\"></span>\r\n\r\n    <button mat-button\r\n      mat-raised\r\n      [routerLink]=\"['/heroes', hero.id ]\">\r\n      <mat-icon>more_horiz</mat-icon>\r\n      Más\r\n    </button>\r\n\r\n  </mat-card-actions>\r\n\r\n</mat-card>\r\n"
+            "templateData": "\r\n<mat-card>\r\n  <mat-card-header>\r\n    <mat-card-title>{{ hero.superhero }}</mat-card-title>\r\n    <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>\r\n  </mat-card-header>\r\n\r\n  <img mat-card-image [src]=\"hero | heroImage\" [alt]=\"hero.superhero\">\r\n\r\n  <mat-card-content class=\"mt-2\">\r\n    <h4>{{ hero.publisher }}</h4>\r\n    <p>\r\n      <strong>Primera aparición</strong> {{ hero.first_appearance }}\r\n      <br>\r\n      <mat-chip-listbox>\r\n        <mat-chip *ngFor=\"let name of hero.characters.split(',') | slice:0:3\">\r\n          {{ name }}\r\n        </mat-chip>\r\n      </mat-chip-listbox>\r\n    </p>\r\n  </mat-card-content>\r\n\r\n  <mat-divider></mat-divider>\r\n\r\n  <mat-card-actions>\r\n\r\n    <button mat-button\r\n      mat-raised\r\n      color=\"primary\"\r\n      [routerLink]=\"['/heroes/edit', hero.id ]\">\r\n      <mat-icon>edit</mat-icon>\r\n      Editar\r\n    </button>\r\n\r\n    <span class=\"spacer\"></span>\r\n\r\n    <button mat-button\r\n      mat-raised\r\n      [routerLink]=\"['/heroes', hero.id ]\">\r\n      <mat-icon>more_horiz</mat-icon>\r\n      Más\r\n    </button>\r\n\r\n  </mat-card-actions>\r\n\r\n</mat-card>\r\n"
         },
         {
             "name": "ConfirmDialogComponent",
@@ -2404,7 +2404,7 @@
         },
         {
             "name": "SearchPageComponent",
-            "id": "component-SearchPageComponent-fd4b2bbcdbd686ee08917bbbaa776bb56f46ace749d6302a7d0e08b1c87b2b478f971239bc723a3b4fa030c798dd9de400aba80def40d505b858fce00a966b56",
+            "id": "component-SearchPageComponent-48a86ed61a602a0b77c9bc0988a199ea976de015cc0469fbed2d43b310ec20e7feae590dbe60053e951a771fd641085a4372ac72e4c7030357c16623ff1a40a8",
             "file": "src/app/heroes/pages/search-page/search-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2513,7 +2513,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FormControl } from '@angular/forms';\r\nimport { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';\r\n\r\nimport { Hero } from '../../interfaces/hero.interface';\r\nimport { HeroesService } from '../../services/heroes.service';\r\n\r\n@Component({\r\n  selector: 'app-search-page',\r\n  templateUrl: './search-page.component.html',\r\n  standalone: false\r\n})\r\nexport class SearchPageComponent {\r\n\r\n  public searchInput = new FormControl<string>('');\r\n  public heroes: Hero[] = [];\r\n  public selectedHero?: Hero;\r\n\r\n  constructor(private heroesService: HeroesService) {\r\n    this.searchInput.valueChanges\r\n      .subscribe(value => this.searchHero());\r\n  }\r\n\r\n  searchHero() {\r\n    const value: string = this.searchInput.value || '';\r\n\r\n    this.heroesService.getSuggestions(value)\r\n      .subscribe(heroes => this.heroes = heroes);\r\n  }\r\n\r\n\r\n  onSelectedOption(event: MatAutocompleteSelectedEvent): void {\r\n    if (!event.option.value) {\r\n      this.selectedHero = undefined;\r\n      return;\r\n    }\r\n\r\n    const hero: Hero = event.option.value;\r\n    this.searchInput.setValue(hero.superhero);\r\n    console.log('Hero:', hero.id);\r\n\r\n    const imgRelativePath = hero.id;\r\n    hero.alt_img = `../src/assets/heroes/${imgRelativePath}.jpg`;\r\n  \r\n\r\n    this.selectedHero = hero;\r\n    console.error('No ves que no renderiza ???',this.selectedHero.alt_img,);\r\n\r\n  }\r\n\r\n\r\n\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FormControl } from '@angular/forms';\r\nimport { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';\r\n\r\nimport { Hero } from '../../interfaces/hero.interface';\r\nimport { HeroesService } from '../../services/heroes.service';\r\n\r\n@Component({\r\n  selector: 'app-search-page',\r\n  templateUrl: './search-page.component.html',\r\n  standalone: false,\r\n})\r\nexport class SearchPageComponent {\r\n\r\n  public searchInput = new FormControl<string>('');\r\n  public heroes: Hero[] = [];\r\n  public selectedHero?: Hero;\r\n\r\n  constructor(private heroesService: HeroesService) {\r\n    this.searchInput.valueChanges\r\n      .subscribe(value => this.searchHero());\r\n  }\r\n\r\n  searchHero() {\r\n    const value: string = this.searchInput.value || '';\r\n\r\n    this.heroesService.getSuggestions(value)\r\n      .subscribe(heroes => this.heroes = heroes);\r\n  }\r\n\r\n\r\n  onSelectedOption(event: MatAutocompleteSelectedEvent): void {\r\n    if (!event.option.value) {\r\n      this.selectedHero = undefined;\r\n      return;\r\n    }\r\n\r\n    const hero: Hero = event.option.value;\r\n    this.searchInput.setValue(hero.superhero);\r\n    console.log('Hero:', hero.id);\r\n\r\n    const imgRelativePath = hero.id;\r\n    hero.alt_img = `../src/assets/heroes/${imgRelativePath}.jpg`;\r\n  \r\n\r\n    this.selectedHero = hero;\r\n    console.error('No ves que no renderiza ???',this.selectedHero.alt_img,);\r\n\r\n  }\r\n\r\n\r\n\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2723,13 +2723,13 @@
         },
         {
             "name": "HeroesModule",
-            "id": "module-HeroesModule-085568fe53b53487e06016f42833c715012ee992581992bfd3a4a7b4a7341b3d0820c609dd18503c8ddab9ffc05d96cfd7eade4eea87a3247a3bc6e882437991",
+            "id": "module-HeroesModule-cf59d2083f1dd0f6f83f7729def85e2aed5f525fb643c212d22dcc03bf368c09871b78a95741cae4efd70314f527f83dd02642a42004492766c16d82c26f6751",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/heroes/heroes.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\n\r\nimport { HeroesRoutingModule } from './heroes-routing.module';\r\nimport { MaterialModule } from '../material/material.module';\r\n\r\nimport { HeroPageComponent } from './pages/hero-page/hero-page.component';\r\nimport { LayoutPageComponent } from './pages/layout-page/layout-page.component';\r\nimport { ListPageComponent } from './pages/list-page/list-page.component';\r\nimport { NewPageComponent } from './pages/new-page/new-page.component';\r\nimport { SearchPageComponent } from './pages/search-page/search-page.component';\r\nimport { CardComponent } from './components/card/card.component';\r\nimport { HeroImagePipe } from './pipes/hero-image.pipe';\r\nimport { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';\r\nimport { HeroEffects, HeroReducer } from './store';\r\nimport { HeroesService } from './services/heroes.service';\r\nimport { StoreModule } from '@ngrx/store';\r\nimport { EffectsModule } from '@ngrx/effects';\r\n\r\n\r\n@NgModule({\r\n    declarations: [\r\n        HeroPageComponent,\r\n        LayoutPageComponent,\r\n        ListPageComponent,\r\n        NewPageComponent,\r\n        SearchPageComponent,\r\n        CardComponent,\r\n        HeroImagePipe,\r\n        ConfirmDialogComponent,\r\n    ],\r\n    imports: [\r\n        CommonModule,\r\n        ReactiveFormsModule,\r\n        HeroesRoutingModule,\r\n        MaterialModule,\r\n        StoreModule.forFeature('heroes', HeroReducer),\r\n        EffectsModule.forFeature([HeroEffects]), \r\n    ],\r\n    providers: [HeroesService],\r\n})\r\nexport class HeroesModule { }",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ReactiveFormsModule } from '@angular/forms';\r\n\r\nimport { HeroesRoutingModule } from './heroes-routing.module';\r\nimport { MaterialModule } from '../material/material.module';\r\n\r\nimport { HeroPageComponent } from './pages/hero-page/hero-page.component';\r\nimport { LayoutPageComponent } from './pages/layout-page/layout-page.component';\r\nimport { ListPageComponent } from './pages/list-page/list-page.component';\r\nimport { NewPageComponent } from './pages/new-page/new-page.component';\r\nimport { SearchPageComponent } from './pages/search-page/search-page.component';\r\nimport { CardComponent } from './components/card/card.component';\r\nimport { HeroImagePipe } from './pipes/hero-image.pipe';\r\nimport { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';\r\nimport { HeroEffects, HeroReducer } from './store';\r\nimport { HeroesService } from './services/heroes.service';\r\nimport { StoreModule } from '@ngrx/store';\r\nimport { EffectsModule } from '@ngrx/effects';\r\n\r\n\r\n@NgModule({\r\n    declarations: [\r\n        HeroPageComponent,\r\n        LayoutPageComponent,\r\n        ListPageComponent,\r\n        NewPageComponent,\r\n        SearchPageComponent,\r\n        CardComponent,\r\n        ConfirmDialogComponent,\r\n    ],\r\n    imports: [\r\n        CommonModule,\r\n        ReactiveFormsModule,\r\n        HeroesRoutingModule,\r\n        MaterialModule,\r\n        StoreModule.forFeature('heroes', HeroReducer),\r\n        EffectsModule.forFeature([HeroEffects]), \r\n        HeroImagePipe,\r\n    ],\r\n    providers: [HeroesService],\r\n})\r\nexport class HeroesModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -2749,9 +2749,6 @@
                             "name": "ConfirmDialogComponent"
                         },
                         {
-                            "name": "HeroImagePipe"
-                        },
-                        {
                             "name": "HeroPageComponent"
                         },
                         {
@@ -2768,6 +2765,9 @@
                 {
                     "type": "imports",
                     "elements": [
+                        {
+                            "name": "HeroImagePipe"
+                        },
                         {
                             "name": "HeroesRoutingModule"
                         },
@@ -2994,6 +2994,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "createAction(\r\n    '[Hero] Load Hero Success',\r\n    props<{ hero: Hero }>() \r\n)"
+            },
+            {
+                "name": "sampleHeroes",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/mocks/hero.mock.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type",
+                "defaultValue": "{\r\n    superman: {\r\n        id: 'dc-superman',\r\n        superhero: 'Superman',\r\n        publisher: Publisher.DCComics,\r\n        alter_ego: 'Clark Kent',\r\n        first_appearance: 'Action Comics #1',\r\n        characters: 'Kal-El',\r\n    },\r\n    batman: {\r\n        id: 'dc-batman',\r\n        superhero: 'Batman',\r\n        publisher: Publisher.DCComics,\r\n        alter_ego: 'Bruce Wayne',\r\n        first_appearance: 'Detective Comics #27',\r\n        characters: 'Bruce Wayne'\r\n    },\r\n    ironman: {\r\n        id: 'marvel-iron',\r\n        superhero: 'Iron Man',\r\n        publisher: Publisher.MarvelComics,\r\n        alter_ego: 'Tony Stark',\r\n        first_appearance: 'Tales of Suspense #39',\r\n        characters: 'Tony Stark'\r\n    }\r\n}"
             },
             {
                 "name": "selectHero",
@@ -3260,6 +3270,18 @@
                     "deprecationMessage": "",
                     "type": "HeroState",
                     "defaultValue": "{\r\n    hero: null,\r\n    loading: false,\r\n    error: null\r\n}"
+                }
+            ],
+            "src/app/mocks/hero.mock.ts": [
+                {
+                    "name": "sampleHeroes",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/mocks/hero.mock.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "defaultValue": "{\r\n    superman: {\r\n        id: 'dc-superman',\r\n        superhero: 'Superman',\r\n        publisher: Publisher.DCComics,\r\n        alter_ego: 'Clark Kent',\r\n        first_appearance: 'Action Comics #1',\r\n        characters: 'Kal-El',\r\n    },\r\n    batman: {\r\n        id: 'dc-batman',\r\n        superhero: 'Batman',\r\n        publisher: Publisher.DCComics,\r\n        alter_ego: 'Bruce Wayne',\r\n        first_appearance: 'Detective Comics #27',\r\n        characters: 'Bruce Wayne'\r\n    },\r\n    ironman: {\r\n        id: 'marvel-iron',\r\n        superhero: 'Iron Man',\r\n        publisher: Publisher.MarvelComics,\r\n        alter_ego: 'Tony Stark',\r\n        first_appearance: 'Tales of Suspense #39',\r\n        characters: 'Tony Stark'\r\n    }\r\n}"
                 }
             ],
             "src/app/heroes/store/selectors/hero.selector.ts": [
@@ -3832,6 +3854,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "selectHeroState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/mocks/hero.mock.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sampleHeroes",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
