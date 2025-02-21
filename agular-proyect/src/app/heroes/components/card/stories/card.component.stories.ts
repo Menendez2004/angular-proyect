@@ -71,7 +71,7 @@ export default {
 
 type Story = StoryObj<MockCardComponent>;
 
-export const cardComponent: Story = {
+export const marvelHero: Story = {
     args: {
         hero: {
             ...sampleHeroes['superman'],

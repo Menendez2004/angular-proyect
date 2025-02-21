@@ -1098,7 +1098,111 @@
         }
     ],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "MockAuthService",
+            "id": "class-MockAuthService-a39f258e7b29fd9d5b79a5f9d020d520a8edccb7b3faf0e3cac6f990ebff478a6c12e67fbd6e3ee1c39deadaf72ff078c4a0dd74fbdb03d020c333c317b17dde",
+            "file": "src/app/mocks/user.mock.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "export const mockUser = {\r\n    id: '1',\r\n    username: 'testuser',\r\n    email: 'testuser@example.com',\r\n    token: 'fake-jwt-token'\r\n};\r\n\r\nexport class MockAuthService {\r\n    currentUser = mockUser;\r\n\r\n    login(username: string, password: string) {\r\n        return Promise.resolve(this.currentUser);\r\n    }\r\n\r\n    logout() {\r\n        this.currentUser = mockUser;\r\n    }\r\n\r\n    isAuthenticated() {\r\n        return !!this.currentUser;\r\n    }\r\n\r\n    getUser() {\r\n        return this.currentUser;\r\n    }\r\n}",
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "currentUser",
+                    "defaultValue": "mockUser",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getUser",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{ id: string; username: string; email: string; token: string; }",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isAuthenticated",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "login",
+                    "args": [
+                        {
+                            "name": "username",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "username",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [],
     "components": [
         {
@@ -1734,44 +1838,7 @@
         },
         {
             "name": "LayoutPageComponent",
-            "id": "component-LayoutPageComponent-493bb179bc540ac48ba2700f54db2474f62077fdc3545d29812692d7029dc963830adb30cae3cb686a7383638f39a3fe18167908b78ecdde3bfb4a245b2ad69d",
-            "file": "src/app/auth/pages/layout-page/layout-page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-layout-page",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./layout-page.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": false,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-layout-page',\r\n  templateUrl: './layout-page.component.html',\r\n  standalone: false,\r\n  styles: [\r\n  ]\r\n})\r\nexport class LayoutPageComponent {\r\n\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<div class=\"grid p-3\">\r\n    <div class=\"col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  </div>\r\n  \r\n  "
-        },
-        {
-            "name": "LayoutPageComponent",
-            "id": "component-LayoutPageComponent-d0ddabe45a86fe7d66b883173ee5582a0bd21475d8cac167c91bff2185aa72974619576b936f34e8b550e0a9c9fecfc00a787d12d23a4e7a55d27bd2f1eb9497-1",
+            "id": "component-LayoutPageComponent-d0ddabe45a86fe7d66b883173ee5582a0bd21475d8cac167c91bff2185aa72974619576b936f34e8b550e0a9c9fecfc00a787d12d23a4e7a55d27bd2f1eb9497",
             "file": "src/app/heroes/pages/layout-page/layout-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1882,10 +1949,47 @@
                     }
                 }
             },
+            "templateData": "<mat-sidenav-container fullscreen>\r\n\r\n    <mat-sidenav #sidenav mode=\"push\" [ngStyle]=\"{ width: '250px' }\">\r\n      <mat-toolbar>\r\n        <span>Menú</span>\r\n        <span class=\"spacer\"></span>\r\n        <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n          <mat-icon>menu</mat-icon>\r\n        </button>\r\n  \r\n      </mat-toolbar>\r\n  \r\n      <mat-nav-list>\r\n        <mat-list-item\r\n          *ngFor=\"let item of sidebarItems\"\r\n          [routerLink]=\"item.url\"\r\n          (click)=\"sidenav.toggle()\"\r\n        >\r\n          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>\r\n          {{ item.label }}\r\n        </mat-list-item>\r\n      </mat-nav-list>\r\n  \r\n    </mat-sidenav>\r\n  \r\n  \r\n    <mat-toolbar color=\"primary\">\r\n      <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n  \r\n      <span class=\"spacer\"></span>\r\n  \r\n      <span>{{ user?.email }}</span>\r\n  \r\n      <button mat-button (click)=\"onLogout()\">\r\n        Logout\r\n      </button>\r\n  \r\n    </mat-toolbar>\r\n  \r\n  \r\n    <div class=\"container p-2\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  \r\n  </mat-sidenav-container>\r\n  \r\n  \r\n  \r\n  \r\n  "
+        },
+        {
+            "name": "LayoutPageComponent",
+            "id": "component-LayoutPageComponent-493bb179bc540ac48ba2700f54db2474f62077fdc3545d29812692d7029dc963830adb30cae3cb686a7383638f39a3fe18167908b78ecdde3bfb4a245b2ad69d-1",
+            "file": "src/app/auth/pages/layout-page/layout-page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-layout-page",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./layout-page.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-layout-page',\r\n  templateUrl: './layout-page.component.html',\r\n  standalone: false,\r\n  styles: [\r\n  ]\r\n})\r\nexport class LayoutPageComponent {\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "LayoutPageComponent-1",
-            "templateData": "<mat-sidenav-container fullscreen>\r\n\r\n    <mat-sidenav #sidenav mode=\"push\" [ngStyle]=\"{ width: '250px' }\">\r\n      <mat-toolbar>\r\n        <span>Menú</span>\r\n        <span class=\"spacer\"></span>\r\n        <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n          <mat-icon>menu</mat-icon>\r\n        </button>\r\n  \r\n      </mat-toolbar>\r\n  \r\n      <mat-nav-list>\r\n        <mat-list-item\r\n          *ngFor=\"let item of sidebarItems\"\r\n          [routerLink]=\"item.url\"\r\n          (click)=\"sidenav.toggle()\"\r\n        >\r\n          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>\r\n          {{ item.label }}\r\n        </mat-list-item>\r\n      </mat-nav-list>\r\n  \r\n    </mat-sidenav>\r\n  \r\n  \r\n    <mat-toolbar color=\"primary\">\r\n      <button mat-icon-button (click)=\"sidenav.toggle()\">\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n  \r\n      <span class=\"spacer\"></span>\r\n  \r\n      <span>{{ user?.email }}</span>\r\n  \r\n      <button mat-button (click)=\"onLogout()\">\r\n        Logout\r\n      </button>\r\n  \r\n    </mat-toolbar>\r\n  \r\n  \r\n    <div class=\"container p-2\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  \r\n  </mat-sidenav-container>\r\n  \r\n  \r\n  \r\n  \r\n  "
+            "templateData": "<div class=\"grid p-3\">\r\n    <div class=\"col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8\">\r\n  \r\n      <router-outlet></router-outlet>\r\n  \r\n    </div>\r\n  </div>\r\n  \r\n  "
         },
         {
             "name": "ListPageComponent",
@@ -1981,7 +2085,7 @@
         },
         {
             "name": "LoginPageComponent",
-            "id": "component-LoginPageComponent-a041846005d43d4134d0525152ec118ee90f0bdd0697c896b338e80c3b18db6f6631dee3830c003fe040f49ee248c3bd3470e065464113597bd3d91bb9078b5c",
+            "id": "component-LoginPageComponent-23fbd517a6a530dda9d62f95e954327ddff9f94262924f7bf9500ec002777d67b31dfc0bcba03dd256f0d83f6202add3aeb6e651a118066de77d0cc196b7eb57",
             "file": "src/app/auth/pages/login-page/login-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1996,7 +2100,26 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "email",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "password",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
@@ -2006,7 +2129,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2020,7 +2143,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { AuthService } from '../../services/auth.service';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-login-page',\r\n  templateUrl: './login-page.component.html',\r\n  standalone: false,\r\n  styles: [\r\n  ]\r\n})\r\nexport class LoginPageComponent {\r\n\r\n  constructor(\r\n    private authService: AuthService,\r\n    private router: Router\r\n  ){}\r\n\r\n  onLogin(): void {\r\n\r\n    this.authService.login('kevin@gmail.com','123456')\r\n      .subscribe( user => {\r\n\r\n        this.router.navigate(['/']);\r\n\r\n      });\r\n\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { AuthService } from '../../services/auth.service';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-login-page',\r\n  templateUrl: './login-page.component.html',\r\n  standalone: false,\r\n  styles: [\r\n  ]\r\n})\r\nexport class LoginPageComponent {\r\n\r\n  constructor(\r\n    private authService: AuthService,\r\n    private router: Router\r\n  ){}\r\n  \r\n  @Input() email = '';\r\n  @Input() password = '';\r\n\r\n  onLogin(): void {\r\n\r\n    this.authService.login(this.email,this.password)\r\n      .subscribe( user => {\r\n\r\n        this.router.navigate(['/']);\r\n\r\n      });\r\n\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2400,7 +2523,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "\r\n<div class=\"flex flex-column\">\r\n\r\n    <span class=\"text-lg mb-4\">Registro</span>\r\n  \r\n    <mat-form-field>\r\n      <mat-label>Usuario</mat-label>\r\n      <input type=\"text\" matInput placeholder=\"Nombre de usuario\">\r\n    </mat-form-field>\r\n  \r\n    <mat-form-field>\r\n      <mat-label>Nombre</mat-label>\r\n      <input type=\"text\" matInput placeholder=\"Nombre de usuario\">\r\n    </mat-form-field>\r\n  \r\n    <mat-form-field>\r\n      <mat-label>Contraseña</mat-label>\r\n      <input type=\"password\" matInput placeholder=\"Contraseña\">\r\n    </mat-form-field>\r\n  \r\n    <button mat-button mat-flat-button color=\"primary\">\r\n      <mat-icon>save</mat-icon>\r\n      Crear cuenta\r\n    </button>\r\n  \r\n  \r\n    <div class=\"flex justify-content-end mt-5\">\r\n      <a routerLink=\"/auth/login\">¿No tienes cuenta?</a>\r\n    </div>\r\n  \r\n  </div>\r\n  \r\n  "
+            "templateData": "\r\n<div class=\"flex flex-column\">\r\n\r\n    <span class=\"text-lg mb-4\">Registro</span>\r\n  \r\n    <mat-form-field>\r\n      <mat-label>Usuario</mat-label>\r\n      <input type=\"text\" matInput placeholder=\"Nombre de usuario\">\r\n    </mat-form-field>\r\n  \r\n    <mat-form-field>\r\n      <mat-label>Nombre</mat-label>\r\n      <input type=\"text\" matInput placeholder=\"Nombre de usuario\">\r\n    </mat-form-field>\r\n  \r\n    <mat-form-field>\r\n      <mat-label>Contraseña</mat-label>\r\n      <input type=\"password\" matInput placeholder=\"Contraseña\">\r\n    </mat-form-field>\r\n  \r\n    <button mat-button mat-flat-button color=\"primary\">\r\n      <mat-icon>save</mat-icon>\r\n      Crear cuenta\r\n    </button>\r\n  \r\n  \r\n    <div class=\"flex justify-content-end mt-5\">\r\n      <a routerLink=\"/auth/login\">¿yatienes cuenta?</a>\r\n    </div>\r\n  \r\n  </div>\r\n  \r\n  "
         },
         {
             "name": "SearchPageComponent",
@@ -2650,9 +2773,6 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "LayoutPageComponent"
-                        },
-                        {
                             "name": "LoginPageComponent"
                         },
                         {
@@ -2750,6 +2870,9 @@
                         },
                         {
                             "name": "HeroPageComponent"
+                        },
+                        {
+                            "name": "LayoutPageComponent"
                         },
                         {
                             "name": "ListPageComponent"
@@ -2994,6 +3117,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "createAction(\r\n    '[Hero] Load Hero Success',\r\n    props<{ hero: Hero }>() \r\n)"
+            },
+            {
+                "name": "mockUser",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/mocks/user.mock.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n    id: '1',\r\n    username: 'testuser',\r\n    email: 'testuser@example.com',\r\n    token: 'fake-jwt-token'\r\n}"
             },
             {
                 "name": "sampleHeroes",
@@ -3272,6 +3405,18 @@
                     "defaultValue": "{\r\n    hero: null,\r\n    loading: false,\r\n    error: null\r\n}"
                 }
             ],
+            "src/app/mocks/user.mock.ts": [
+                {
+                    "name": "mockUser",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/mocks/user.mock.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n    id: '1',\r\n    username: 'testuser',\r\n    email: 'testuser@example.com',\r\n    token: 'fake-jwt-token'\r\n}"
+                }
+            ],
             "src/app/mocks/hero.mock.ts": [
                 {
                     "name": "sampleHeroes",
@@ -3540,7 +3685,7 @@
                 "linktype": "component",
                 "name": "LoginPageComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -3864,6 +4009,25 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "sampleHeroes",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/mocks/user.mock.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "MockAuthService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/mocks/user.mock.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "mockUser",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

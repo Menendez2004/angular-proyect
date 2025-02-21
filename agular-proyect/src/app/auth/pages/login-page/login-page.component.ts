@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -15,10 +15,13 @@ export class LoginPageComponent {
     private authService: AuthService,
     private router: Router
   ){}
+  
+  @Input() email = '';
+  @Input() password = '';
 
   onLogin(): void {
 
-    this.authService.login('kevin@gmail.com','123456')
+    this.authService.login(this.email,this.password)
       .subscribe( user => {
 
         this.router.navigate(['/']);
