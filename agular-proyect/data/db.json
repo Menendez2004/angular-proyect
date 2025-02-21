@@ -243,13 +243,13 @@
       "alt_img": "12"
     },
     {
-      "id": "dc-12",
-      "superhero": "12",
+      "id": "dc-test",
+      "superhero": "test",
       "publisher": "DC Comics",
-      "alter_ego": "12",
-      "first_appearance": "12",
-      "characters": "12",
-      "alt_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmAoSPgN1NQKm6kTJKCYxVtsYhOtIS3PnJQ&s"
+      "alter_ego": "testing",
+      "first_appearance": "testing",
+      "characters": "test1",
+      "alt_img": "https://spider-man.fandom.com/es/wiki/Peter_Parker_%28Tierra-616%29"
     }
   ]
 }
